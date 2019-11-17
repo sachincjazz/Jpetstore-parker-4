@@ -6,7 +6,7 @@ node {
 	def GIT_COMMIT
   stage ('cloning the repository'){
 	  
-      def scm = git 'https://github.com/jitendra-git123/Jpetstore-parker-3'
+      def scm = git 'https://github.com/jitendra-git123/Jpetstore-parker-4'
 	  GIT_COMMIT = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
 	  echo "COMMITID ${GIT_COMMIT}"
 	  //echo "BBBB ${scm}"
