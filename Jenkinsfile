@@ -1,5 +1,5 @@
 node {
-        def majorVersion="1.0.${BUILD_NUMBER}"
+        def majorVersion="3.0.${BUILD_NUMBER}"
 	currentBuild.displayName = majorVersion
 
 	//currentBuild.displayName = "2.0.${BUILD_NUMBER}"
@@ -43,7 +43,7 @@ node {
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
 				appExtId: "e85cb6ce-96c6-4a9f-a5f8-d5deae1e2053",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
-                                name: "Executed in JUnit - 1.0.${BUILD_NUMBER}",
+                                name: "Executed in JUnit - 3.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
                            
                         ])}catch(e){
@@ -91,7 +91,7 @@ echo "(*******)"
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-	                pushVersion: '1.0.${BUILD_NUMBER}',
+	                pushVersion: '3.0.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
 			 baseDir: '/var/lib/jenkins/workspace/Velocity/Jpetstore/target/',
 	                fileIncludePatterns: '*.war',
@@ -124,14 +124,14 @@ echo "(*******)"
 	//sleep 25
 	  step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
-			 snapshotName: "1.0.${BUILD_NUMBER}"],
-			 deployApp: 'JPetStore', 
+			 snapshotName: "3.0.${BUILD_NUMBER}"],
+			 deployApp: 'JPetStore-velocity', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'JPetStore-velocity_Dev', 
 			 deployOnlyChanged: false, 
 			 deployProc: 'Deploy-JPetStore-velocity', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStorevelocityComponent:1.0.${BUILD_NUMBER}"], 
+			 deployVersions: "JPetStorevelocityComponent:3.0.${BUILD_NUMBER}"], 
 		siteName: 'UCD_Local'])
  }
 	//step([
