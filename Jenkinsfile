@@ -125,7 +125,7 @@ echo "(*******)"
 	  step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "2.0.${BUILD_NUMBER}"],
-			 deployApp: 'JPetStore-velocity', 
+			 deployApp: 'JPetStore', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'JPetStore-velocity_Dev', 
 			 deployOnlyChanged: false, 
