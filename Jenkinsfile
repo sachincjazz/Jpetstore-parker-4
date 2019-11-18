@@ -154,7 +154,7 @@ echo "(*******)"
 	
 stage ('wait for deploy') {
 	sleep 25
-	// echo 'Executing HCL One test ... '
+	// echo 'Executing HCL One test ...'
 	//sh '/var/jenkins_home/onetest/hcl-onetest-command.sh'
  }	
 
