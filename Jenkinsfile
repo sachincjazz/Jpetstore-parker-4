@@ -111,14 +111,14 @@ echo "(*******)"
 	  def newComponentVersionId = "${JPetStorevelocityComponent_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
 	  //step($class: 'UploadBuild', tenantId: "5ade13625558f2c6688d15ce", revision: "${GIT_COMMIT}", appName: "Altoro", requestor: "admin", id: "${newComponentVersionId}" )
- //step($class: 'UploadBuild', 
-   //    tenantId: "5ade13625558f2c6688d15ce", 
-     //  revision: "${GIT_COMMIT}", 
-       //appName: "JPetStore-velocity", 
-       //requestor: "admin", 
-       //id: "${newComponentVersionId}", 
-       //versionName: "2.0.${BUILD_NUMBER}"
-      //)
+ step($class: 'UploadBuild', 
+       tenantId: "5ade13625558f2c6688d15ce", 
+       revision: "${GIT_COMMIT}", 
+       appName: "JPetStore", 
+       requestor: "admin", 
+       id: "${newComponentVersionId}", 
+       versionName: "2.0.${BUILD_NUMBER}"
+      )
      
 	//echo "Demo123 ${newComponentVersionId}"
 	//sleep 25
