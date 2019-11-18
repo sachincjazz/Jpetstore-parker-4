@@ -57,9 +57,9 @@ node {
 		//def path = tool name: 'gradle-4.7', type: 'gradle'
 		
 		withSonarQubeEnv('sonar-server'){
-			 //"SONAR_USER_HOME=/opt/bitnami/jenkins/.sonar ${mvnHome}/bin/mvn sonar:sonar"
-			//sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-velocity -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
-			  sh  "sonar:sonar -Dsonar.projectName=JpetStore-velocity -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
+			 "SONAR_USER_HOME=/opt/bitnami/jenkins/.sonar ${mvnHome}/bin/mvn sonar:sonar"
+			sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-velocity -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
+			  //sh  "sonar:sonar -Dsonar.projectName=JpetStore-velocity -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
 			//sh "${path}/bin/gradle --info -Dsonar.host.url=http://localhost:9000 sonarqube"
 		}
 	 }
