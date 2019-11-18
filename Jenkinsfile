@@ -117,7 +117,7 @@ echo "(*******)"
        appName: "JPetStore", 
        requestor: "admin", 
        id: "${newComponentVersionId}", 
-       versionName: "2.0.${BUILD_NUMBER}"
+       versionName: "3.0.${BUILD_NUMBER}"
       )
      
 	//echo "Demo123 ${newComponentVersionId}"
