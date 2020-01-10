@@ -96,7 +96,7 @@ echo "(*******)"
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
 	                pushVersion: '3.0.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
-			 baseDir: '/var/lib/jenkins/workspace/Velocity/Jpetstore/target/',
+			 baseDir: '/var/lib/jenkins/workspace/Velocity/Jpetstore-velocity/target/',
 	                fileIncludePatterns: '*.war',
 	                fileExcludePatterns: '',
 	               // pushProperties: 'jenkins.server=Jenkins-app\njenkins.reviewed=false',
