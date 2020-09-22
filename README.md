@@ -87,3 +87,4 @@ $ ./mvnw test -P itest
 #Updated on VL-44
 Updated for VL46 SC story2
 # updated for VL-47
+added for VL-48
