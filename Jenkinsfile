@@ -118,7 +118,7 @@ stage('Publish Artificats to Launch'){
          versionName: "1.1.${BUILD_NUMBER}"
       )
 }
-	stage ('Trigger Launch for ASOC and OneTest') {
+	stage ('Deploy to DEV') {
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "1.1.${BUILD_NUMBER}"],
