@@ -1,5 +1,5 @@
 node {
-        def majorVersion="3.0.${BUILD_NUMBER}"
+        def majorVersion="1.0.${BUILD_NUMBER}"
 	currentBuild.displayName = majorVersion
 
 	//currentBuild.displayName = "2.0.${BUILD_NUMBER}"
