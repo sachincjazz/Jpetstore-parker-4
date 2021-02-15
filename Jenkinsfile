@@ -79,25 +79,24 @@ node {
 	//]
 //}
 	
-echo "(*******)"	
-  stage('Publish Artificats to UCD'){
-	  
-   step([$class: 'UCDeployPublisher',
-	        siteName: 'UCD_Local',
+echo "(*******)"
+stage('Publish Artificats to Launch'){	
+  step([$class: 'UCDeployPublisher',
+	        siteName: 'UCD',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-	            componentName: 'JPetStorevelocityComponent',
+	            componentName: 'ABAP',
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'JPetStore-velocity'
+	                componentApplication: 'SAP_ABAP-BE'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-	                pushVersion: '3.0.${BUILD_NUMBER}',
+	                pushVersion: '2.1.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
-			 baseDir: '/var/lib/jenkins/workspace/Velocity/Jpetstore-velocity/target/',
-	                fileIncludePatterns: '*.war',
+			 baseDir: '/usar/ucd/temp/',
+	                fileIncludePatterns: '*.*',
 	                fileExcludePatterns: '',
 	               // pushProperties: 'jenkins.server=Jenkins-app\njenkins.reviewed=false',
 	                pushDescription: 'Pushed from Jenkins'
@@ -105,55 +104,33 @@ echo "(*******)"
 	        ]
      ])
 	  
-		//sh 'env > env.txt'
-	//	readFile('env.txt').split("\r?\n").each {
-	//	println it
-	//	}
-	echo "(*******)"
-	  echo "Demo1234 ${JPetStorevelocityComponent_VersionId}"
-	  def newComponentVersionId = "${JPetStorevelocityComponent_VersionId}"
+          echo "(*******)"
+	  echo "Demo1234 ${ABAP_VersionId}"
+	  def newComponentVersionId = "${ABAP_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
-	  //step($class: 'UploadBuild', tenantId: "5ade13625558f2c6688d15ce", revision: "${GIT_COMMIT}", appName: "Altoro", requestor: "admin", id: "${newComponentVersionId}" )
- step($class: 'UploadBuild', 
-       tenantId: "5ade13625558f2c6688d15ce", 
-       revision: "${GIT_COMMIT}", 
-       appName: "JPetStore-velocity", 
-       requestor: "admin", 
-       id: "${newComponentVersionId}", 
-       versionName: "3.0.${BUILD_NUMBER}"
+
+         step($class: 'UploadBuild', 
+         tenantId: "5ade13625558f2c6688d15ce", 
+         revision: "${GIT_COMMIT}", 
+         appName: "SAP_ABAP-BE", 
+         requestor: "admin", 
+         id: "${newComponentVersionId}", 
+         versionName: "2.1.${BUILD_NUMBER}"
       )
-     
-	//echo "Demo123 ${newComponentVersionId}"
-	//sleep 25
-	  step([$class: 'UCDeployPublisher',
+}
+	stage ('Trigger Launch for ASOC and OneTest') {
+	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
-			 snapshotName: "3.0.${BUILD_NUMBER}"],
-			 deployApp: 'JPetStore-velocity', 
+			 snapshotName: "2.1.${BUILD_NUMBER}"],
+			 deployApp: 'SAP_ABAP-BE', 
 			 deployDesc: 'Requested from Jenkins', 
-			 deployEnv: 'JPetStore-velocity_Dev', 
+			 deployEnv: 'DEV-ES1001', 
 			 deployOnlyChanged: false, 
-			 deployProc: 'Deploy-JPetStore-velocity', 
+			 deployProc: 'Test', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStorevelocityComponent:3.0.${BUILD_NUMBER}"], 
-		siteName: 'UCD_Local'])
+			 deployVersions: "ABAP:2.1.${BUILD_NUMBER}"], 
+		siteName: 'UCD'])
  }
-	//step([
-          //          $class: 'UploadDeployment',
-            //        debug: true,
-              //      name: 'Deploy Internal Docker Compose',
-                //    appName: 'JPetStore-velocity',
-               //     description: "${majorVersion} to DEV",
-                 //   startTime: "${currentBuild.startTimeInMillis}",
-            //        endTime: "${System.currentTimeMillis()}",
-              //      environmentId: "19e805ce-c40a-487e-bfdb-5b06abff4b2d",
-                //    environmentName: "DEV",
-                    //initiator: "${username}",
-                //    result: 'success,
-                  //  tenantId: "5ade13625558f2c6688d15ce",
-                   // type: 'Jenkins',
-                   // versionExtId: "${majorVersion}",
-                   // versionName: "${majorVersion}"
-                //])
 	
 stage ('wait for deploy') {
 	sleep 25
