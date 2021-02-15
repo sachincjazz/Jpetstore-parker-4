@@ -85,11 +85,11 @@ stage('Publish Artificats to Launch'){
 	        siteName: 'UCD',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-	            componentName: 'ABAP',
+	            componentName: 'JPetStoreComponent',
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'SAP_ABAP-BE'
+	                componentApplication: 'Distributed-JPetStore'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
@@ -105,8 +105,8 @@ stage('Publish Artificats to Launch'){
      ])
 	  
           echo "(*******)"
-	  echo "Demo1234 ${ABAP_VersionId}"
-	  def newComponentVersionId = "${ABAP_VersionId}"
+	  echo "Demo1234 ${JPetStoreComponent_VersionId}"
+	  def newComponentVersionId = "${JPetStoreComponent_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
 
          step($class: 'UploadBuild', 
@@ -122,13 +122,13 @@ stage('Publish Artificats to Launch'){
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "2.1.${BUILD_NUMBER}"],
-			 deployApp: 'SAP_ABAP-BE', 
+			 deployApp: 'Distributed-JPetStore', 
 			 deployDesc: 'Requested from Jenkins', 
-			 deployEnv: 'DEV-ES1001', 
+			 deployEnv: 'DEV', 
 			 deployOnlyChanged: false, 
-			 deployProc: 'Test', 
+			 deployProc: 'Deploy-JPetStore', 
 			 deployReqProps: '', 
-			 deployVersions: "ABAP:2.1.${BUILD_NUMBER}"], 
+			 deployVersions: "JPetStoreComponent:2.1.${BUILD_NUMBER}"], 
 		siteName: 'UCD'])
  }
 	
