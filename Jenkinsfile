@@ -39,11 +39,11 @@ node {
                         // Need to change the path of the test result xml result required.               
                                 filePath: "target/surefire-reports/TEST-org.mybatis.jpetstore.service.OrderServiceTest.xml",
                                 tenant_id: "5ade13625558f2c6688d15ce",
-                                appName: "JPetStore-velocity",
+                                appName: "Distributed-JPetStore",
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
-				appExtId: "e85cb6ce-96c6-4a9f-a5f8-d5deae1e2053",
+				appExtId: "3122ef90-7367-4fb6-90ad-3e9628419a67",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
-                                name: "Executed in JUnit - 3.0.${BUILD_NUMBER}",
+                                name: "Executed in JUnit - 1.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
                            
                         ])}catch(e){
@@ -93,7 +93,7 @@ stage('Publish Artificats to Launch'){
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-	                pushVersion: '2.1.${BUILD_NUMBER}',
+	                pushVersion: '1.1.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
 			 baseDir: '/usar/ucd/temp/',
 	                fileIncludePatterns: '*.*',
@@ -112,23 +112,23 @@ stage('Publish Artificats to Launch'){
          step($class: 'UploadBuild', 
          tenantId: "5ade13625558f2c6688d15ce", 
          revision: "${GIT_COMMIT}", 
-         appName: "SAP_ABAP-BE", 
+         appName: "Distributed-JPetStore", 
          requestor: "admin", 
          id: "${newComponentVersionId}", 
-         versionName: "2.1.${BUILD_NUMBER}"
+         versionName: "1.1.${BUILD_NUMBER}"
       )
 }
 	stage ('Trigger Launch for ASOC and OneTest') {
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
-			 snapshotName: "2.1.${BUILD_NUMBER}"],
+			 snapshotName: "1.1.${BUILD_NUMBER}"],
 			 deployApp: 'Distributed-JPetStore', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'DEV', 
 			 deployOnlyChanged: false, 
 			 deployProc: 'Deploy-JPetStore', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStoreComponent:2.1.${BUILD_NUMBER}"], 
+			 deployVersions: "JPetStoreComponent:1.1.${BUILD_NUMBER}"], 
 		siteName: 'UCD'])
  }
 	
