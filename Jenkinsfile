@@ -95,8 +95,8 @@ stage('Publish Artificats to Launch'){
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
 	                pushVersion: '1.1.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
-			 baseDir: '/usar/ucd/temp/',
-	                fileIncludePatterns: '*.*',
+			 baseDir: '/var/lib/jenkins/workspace/SAP/sap_distributed/JpetStore/target/',
+	                fileIncludePatterns: '*.war',
 	                fileExcludePatterns: '',
 	               // pushProperties: 'jenkins.server=Jenkins-app\njenkins.reviewed=false',
 	                pushDescription: 'Pushed from Jenkins'
