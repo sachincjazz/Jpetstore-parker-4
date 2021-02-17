@@ -53,7 +53,7 @@ node {
          echo("************************** Test Result Uploaded Successful to Velocity****************************")
 	
 	stage('SonarQube Analysis'){
-		def mvnHome = tool name : 'Maven3.5.4', type:'maven'
+		def mvnHome = tool name : 'Maven3.6.0', type:'maven'
 		//def path = tool name: 'gradle-4.7', type: 'gradle'
 		
 		withSonarQubeEnv('sonar-server'){
