@@ -39,9 +39,9 @@ node {
                         // Need to change the path of the test result xml result required.               
                                 filePath: "target/surefire-reports/TEST-org.mybatis.jpetstore.service.OrderServiceTest.xml",
                                 tenant_id: "5ade13625558f2c6688d15ce",
-                                appName: "Distributed-JPetStore",
+                                appName: "CIAM",
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
-				appExtId: "3122ef90-7367-4fb6-90ad-3e9628419a67",
+				appExtId: "43d49eda-72ee-4a70-9de8-e06eecc24693",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
                                 name: "Executed in JUnit - 4.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
@@ -85,11 +85,11 @@ stage('Publish Artificats to Launch'){
 	        siteName: 'UCD',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-	            componentName: 'JPetStoreComponent',
+	            componentName: 'CIAMComp',
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'Distributed-JPetStore'
+	                componentApplication: 'CIAM'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
@@ -105,14 +105,14 @@ stage('Publish Artificats to Launch'){
      ])
 	  
           echo "(*******)"
-	  echo "Demo1234 ${JPetStoreComponent_VersionId}"
-	  def newComponentVersionId = "${JPetStoreComponent_VersionId}"
+	  echo "Demo1234 ${CIAMComp_VersionId}"
+	  def newComponentVersionId = "${CIAMComp_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
 
          step($class: 'UploadBuild', 
          tenantId: "5ade13625558f2c6688d15ce", 
          revision: "${GIT_COMMIT}", 
-         appName: "JPetStoreComponent", 
+         appName: "CIAM", 
          requestor: "admin", 
          id: "${newComponentVersionId}", 
          versionName: "4.1.${BUILD_NUMBER}"
@@ -122,13 +122,13 @@ stage('Publish Artificats to Launch'){
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "4.1.${BUILD_NUMBER}"],
-			 deployApp: 'Distributed-JPetStore', 
+			 deployApp: 'CIAM', 
 			 deployDesc: 'Requested from Jenkins', 
-			 deployEnv: 'DEV', 
+			 deployEnv: 'FT', 
 			 deployOnlyChanged: false, 
-			 deployProc: 'Deploy-JPetStore', 
+			 deployProc: 'deploy', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStoreComponent:4.1.${BUILD_NUMBER}"], 
+			 deployVersions: "CIAM:4.1.${BUILD_NUMBER}"], 
 		siteName: 'UCD'])
  }
 	
