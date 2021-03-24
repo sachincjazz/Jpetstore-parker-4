@@ -112,7 +112,7 @@ stage('Publish Artificats to Launch'){
          step($class: 'UploadBuild', 
          tenantId: "5ade13625558f2c6688d15ce", 
          revision: "${GIT_COMMIT}", 
-         appName: "JPetStoreComponent", 
+         appName: "Distributed-JPetStore", 
          requestor: "admin", 
          id: "${newComponentVersionId}", 
          versionName: "4.1.${BUILD_NUMBER}"
