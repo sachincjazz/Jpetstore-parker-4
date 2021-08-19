@@ -63,7 +63,7 @@ node {
 	//	//	sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-Accelerate" 
 	//	////	  sh  "sonar:sonar -Dsonar.projectName=JpetStore-Accelerate -Dsonar.host.url=http://localhost:50000 sonarqube"
 	//		//sh "${path}/bin/gradle --info -Dsonar.host.url=http://localhost:9000 sonarqube"
-		}
+	//	}
 	 }
 	
 	
