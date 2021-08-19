@@ -39,9 +39,9 @@ node {
                         // Need to change the path of the test result xml result required.               
                                 filePath: "target/surefire-reports/TEST-org.mybatis.jpetstore.service.OrderServiceTest.xml",
                                 tenant_id: "5ade13625558f2c6688d15ce",
-                                appName: "Distributed-JPetStore",
+                                appName: "JPetStore-Velocity",
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
-				appExtId: "3122ef90-7367-4fb6-90ad-3e9628419a67",
+				appExtId: "0ef5431b-017d-42cf-bbaf-a52ac480b469",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
                                 name: "Executed in JUnit - 1.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
@@ -53,16 +53,16 @@ node {
          echo("************************** Test Result Uploaded Successful to Velocity****************************")
 	
 	stage('SonarQube Analysis'){
-		def mvnHome = tool name : 'Maven3.8.2', type:'maven'
-		//def path = tool name: 'gradle-4.7', type: 'gradle'
+		//def mvnHome = tool name : 'Maven3.8.2', type:'maven'
+		// //def path = tool name: 'gradle-4.7', type: 'gradle'
 		
-		withSonarQubeEnv('sonar-server'){
-			 //"SONAR_USER_HOME=/opt/bitnami/jenkins/.sonar ${mvnHome}/bin/mvn sonar:sonar"
-			//SONAR_MAVEN_GOAL -Dsonar.host.url="http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000
-			//sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-velocity-latest1 -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
-		//	sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-Accelerate" 
-		////	  sh  "sonar:sonar -Dsonar.projectName=JpetStore-Accelerate -Dsonar.host.url=http://localhost:50000 sonarqube"
-			//sh "${path}/bin/gradle --info -Dsonar.host.url=http://localhost:9000 sonarqube"
+	//	withSonarQubeEnv('sonar-server'){
+	//		 //"SONAR_USER_HOME=/opt/bitnami/jenkins/.sonar ${mvnHome}/bin/mvn sonar:sonar"
+	//		//SONAR_MAVEN_GOAL -Dsonar.host.url="http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000
+	//		//sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-velocity-latest1 -Dsonar.host.url=http://ec2-3-130-60-241.us-east-2.compute.amazonaws.com:50000 sonarqube"
+	//	//	sh  "mvn sonar:sonar -Dsonar.projectName=JpetStore-Accelerate" 
+	//	////	  sh  "sonar:sonar -Dsonar.projectName=JpetStore-Accelerate -Dsonar.host.url=http://localhost:50000 sonarqube"
+	//		//sh "${path}/bin/gradle --info -Dsonar.host.url=http://localhost:9000 sonarqube"
 		}
 	 }
 	
@@ -112,7 +112,7 @@ stage('Publish Artificats to Launch'){
          step($class: 'UploadBuild', 
          tenantId: "5ade13625558f2c6688d15ce", 
          revision: "${GIT_COMMIT}", 
-         appName: "Distributed-JPetStore", 
+         appName: "JPetStore-Velocity", 
          requestor: "admin", 
          id: "${newComponentVersionId}", 
          versionName: "1.1.${BUILD_NUMBER}"
