@@ -27,7 +27,7 @@ node {
   }
   
   stage ('Junit Testcase'){
-  withMaven(jdk: 'java1.8', maven: 'Maven3.6.0') {
+  withMaven(jdk: 'java1.8', maven: 'Maven3.8.2') {
       sh 'mvn test -Dtest=Runner'	     
     }
   }
@@ -53,7 +53,7 @@ node {
          echo("************************** Test Result Uploaded Successful to Velocity****************************")
 	
 	stage('SonarQube Analysis'){
-		def mvnHome = tool name : 'Maven3.6.0', type:'maven'
+		def mvnHome = tool name : 'Maven3.8.2', type:'maven'
 		//def path = tool name: 'gradle-4.7', type: 'gradle'
 		
 		withSonarQubeEnv('sonar-server'){
