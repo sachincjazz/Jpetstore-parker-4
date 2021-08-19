@@ -85,17 +85,17 @@ stage('Publish Artificats to Launch'){
 	        siteName: 'UCD',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-	            componentName: 'JPetStoreComponent',
+	            componentName: 'JPetStorevelocityComponent',
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'Distributed-JPetStore'
+	                componentApplication: 'JPetStore-Velocity'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
 	                pushVersion: '1.1.${BUILD_NUMBER}',
 	                //baseDir: '/var/jenkins_home/workspace/JPetStore/target',
-			 baseDir: '/var/lib/jenkins/workspace/SAP/sap_distributed/JpetStore/target/',
+			 baseDir: '/var/lib/jenkins/workspace/JPetStore/target/',
 	                fileIncludePatterns: '*.war',
 	                fileExcludePatterns: '',
 	               // pushProperties: 'jenkins.server=Jenkins-app\njenkins.reviewed=false',
@@ -122,13 +122,13 @@ stage('Publish Artificats to Launch'){
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "1.1.${BUILD_NUMBER}"],
-			 deployApp: 'Distributed-JPetStore', 
+			 deployApp: 'JPetStore-Velocity', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'DEV', 
 			 deployOnlyChanged: false, 
-			 deployProc: 'Deploy-JPetStore', 
+			 deployProc: 'Deploy-JPetStore-accelerate', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStoreComponent:1.1.${BUILD_NUMBER}"], 
+			 deployVersions: "JPetStorevelocityComponent:1.1.${BUILD_NUMBER}"], 
 		siteName: 'UCD'])
  }
 	
