@@ -89,7 +89,7 @@ stage('Publish Artificats to HCL Launch'){
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'JPetStore'
+	                componentApplication: 'JPetStore-Distributed'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
@@ -112,7 +112,7 @@ stage('Publish Artificats to HCL Launch'){
          step($class: 'UploadBuild', 
          tenantId: "5ade13625558f2c6688d15ce", 
          revision: "${GIT_COMMIT}", 
-         appName: "JPetStore-Velocity", 
+         appName: "JPetStore-Distributed", 
          requestor: "admin", 
          id: "${newComponentVersionId}", 
          versionName: "1.1.${BUILD_NUMBER}"
@@ -122,7 +122,7 @@ stage('Publish Artificats to HCL Launch'){
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "1.1.${BUILD_NUMBER}"],
-			 deployApp: 'JPetStore', 
+			 deployApp: 'JPetStore-Distributed', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'DEV', 
 			 deployOnlyChanged: false, 
