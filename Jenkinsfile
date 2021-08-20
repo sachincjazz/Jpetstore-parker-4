@@ -85,11 +85,11 @@ stage('Publish Artificats to Launch'){
 	        siteName: 'Launch_Local',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-	            componentName: 'JPetStorevelocityComponent',
+	            componentName: 'WebComponent',
 	            createComponent: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
 	                componentTemplate: '',
-	                componentApplication: 'JPetStore-Velocity'
+	                componentApplication: 'JPetStore'
 	            ],
 	            delivery: [
 	                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
@@ -122,13 +122,13 @@ stage('Publish Artificats to Launch'){
 	step([$class: 'UCDeployPublisher',
 		deploy: [ createSnapshot: [deployWithSnapshot: true, 
 			 snapshotName: "1.1.${BUILD_NUMBER}"],
-			 deployApp: 'JPetStore-Velocity', 
+			 deployApp: 'JPetStore', 
 			 deployDesc: 'Requested from Jenkins', 
 			 deployEnv: 'DEV', 
 			 deployOnlyChanged: false, 
-			 deployProc: 'Deploy-JPetStore-accelerate', 
+			 deployProc: 'DeployWeb', 
 			 deployReqProps: '', 
-			 deployVersions: "JPetStorevelocityComponent:1.1.${BUILD_NUMBER}"], 
+			 deployVersions: "WebComponent:1.1.${BUILD_NUMBER}"], 
 		siteName: 'Launch_Local'])
  }
 	
