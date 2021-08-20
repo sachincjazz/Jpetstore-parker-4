@@ -80,7 +80,7 @@ node {
 //}
 	
 echo "(*******)"
-stage('Publish Artificats to Launch'){	
+stage('Publish Artificats to HCL Launch'){	
   step([$class: 'UCDeployPublisher',
 	        siteName: 'Launch_Local',
 	        component: [
