@@ -82,7 +82,7 @@ node {
 echo "(*******)"
 stage('Publish Artificats to Launch'){	
   step([$class: 'UCDeployPublisher',
-	        siteName: 'UCD',
+	        siteName: 'Launch_Local',
 	        component: [
 	            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
 	            componentName: 'JPetStorevelocityComponent',
@@ -129,7 +129,7 @@ stage('Publish Artificats to Launch'){
 			 deployProc: 'Deploy-JPetStore-accelerate', 
 			 deployReqProps: '', 
 			 deployVersions: "JPetStorevelocityComponent:1.1.${BUILD_NUMBER}"], 
-		siteName: 'UCD'])
+		siteName: 'Launch_Local'])
  }
 	
 stage ('wait for deploy') {
