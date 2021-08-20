@@ -105,8 +105,8 @@ stage('Publish Artificats to HCL Launch'){
      ])
 	  
           echo "(*******)"
-	  echo "Demo1234 ${JPetStoreComponent_VersionId}"
-	  def newComponentVersionId = "${JPetStoreComponent_VersionId}"
+	  echo "Demo1234 ${WebComponent_VersionId}"
+	  def newComponentVersionId = "${WebComponent_VersionId}"
 	  echo "git commit ${GIT_COMMIT}"
 
          step($class: 'UploadBuild', 
