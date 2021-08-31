@@ -43,7 +43,7 @@ node {
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
 				appExtId: "0ef5431b-017d-42cf-bbaf-a52ac480b469",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
-                                name: "Executed in JUnit - 1.0.${BUILD_NUMBER}",
+                                name: "Junit Test - 1.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
                            
                         ])}catch(e){
