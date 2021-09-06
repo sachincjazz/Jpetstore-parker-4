@@ -66,10 +66,7 @@ node {
 		////	  sh  "sonar:sonar -Dsonar.projectName=JpetStore-Accelerate -Dsonar.host.url=http://localhost:50000 sonarqube"
 			//sh "${path}/bin/gradle --info -Dsonar.host.url=http://localhost:9000 sonarqube"
 			
-			mvn sonar:sonar \
-                       -Dsonar.projectKey=JPetStore \
-                       -Dsonar.host.url=http://10.83.68.20:9000 \
-                       -Dsonar.login=ad0309b56192390d914725cb9ded71f04e5a902c
+		     sh	"mvn sonar:sonar -Dsonar.projectKey=JPetStore -Dsonar.host.url=http://10.83.68.20:9000 -Dsonar.login=ad0309b56192390d914725cb9ded71f04e5a902c"
 		}
 	 }
 	
