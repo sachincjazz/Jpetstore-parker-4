@@ -41,7 +41,7 @@ node {
                                 tenant_id: "5ade13625558f2c6688d15ce",
                                 appName: "JPetStore-Distributed",
                                 //appExtId: "4b006cdb-0e50-43f2-ac87-a7586a65389e",
-				appExtId: "0ef5431b-017d-42cf-bbaf-a52ac480b469",
+				appExtId: "e6bb5903-f71b-4d3a-b0da-c7b5ccc2dd87",
 				//appId: "acdfae67-616f-43e5-8872-2cfa3aa583de",    
                                 name: "Junit Test - 1.0.${BUILD_NUMBER}",
                                 testSetName: "Junit Test Run from Jenkins"]
